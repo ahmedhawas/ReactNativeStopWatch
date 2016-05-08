@@ -68,9 +68,14 @@ const styles = StyleSheet.create({
   },
   timerWrapper: {
     flex: 5, // 5/8 of space
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonWrapper: {
     flex: 3, // 3/8 of space
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   }
 });
 
