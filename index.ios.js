@@ -1,10 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -16,38 +11,67 @@ class stopWatch extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <View style={[ styles.header, this.border('yellow') ]}>
+          <View style={[this.border('red'), styles.timerWrapper]}>
+            <Text>
+              00:00:00
+            </Text>
+          </View>
+          <View style={[this.border('green'), styles.buttonWrapper]}>
+            {this.startStopButton()}
+            {this.lapButton()}
+          </View>
+        </View>
+        <View style={[styles.footer, , this.border('blue')]}>
+          <Text>
+            List of laps
+          </Text>
+        </View>
       </View>
     );
+  }
+
+  startStopButton = () => {
+    return (
+      <View>
+        <Text>Start</Text>
+      </View>
+    );
+  }
+
+  lapButton = () => {
+    return (
+      <View>
+        <Text>Lap</Text>
+      </View>
+    );
+  }
+
+  border = (color) => {
+    return {
+      borderColor: color,
+      borderWidth: 4
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1, // fill entire screen
+    alignItems: 'stretch', //take up as much space in flexDirection
+  },
+  header: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  footer: {
+    flex: 1,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  timerWrapper: {
+    flex: 5, // 5/8 of space
   },
+  buttonWrapper: {
+    flex: 3, // 3/8 of space
+  }
 });
 
 AppRegistry.registerComponent('stopWatch', () => stopWatch);
